@@ -1,14 +1,6 @@
-file { '/var/www/html/index.html':
-  ensure  => 'file',
-  content => '<html><body><h1>Holberton</h1></body></html>',
-  owner   => 'www-data',
-  group   => 'www-data',
-  mode    => '0644',
-}
+pache returns 500; use this script to fix typo in config
 
-service { 'apache2':
-  ensure => 'running',
-  enable => true,
-  require => File['/var/www/html/index.html'],
+exec { 'fix config typo':
+  command => "sed -i 's/.phpp/.php/' /var/www/html/wp-settings.php",
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
-
