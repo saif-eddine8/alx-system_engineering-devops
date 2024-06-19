@@ -1,6 +1,6 @@
-pache returns 500; use this script to fix typo in config
+# Fixes bad `phpp` extensions to `php` in the WordPress file `wp-settings.php`.
 
-exec { 'fix config typo':
-  command => "sed -i 's/.phpp/.php/' /var/www/html/wp-settings.php",
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
